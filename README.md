@@ -1,2 +1,2 @@
 # WanXiangHackathon
-WanXiangHackathon
+WanXiangHackathon ShangHai
