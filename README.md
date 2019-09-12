@@ -47,5 +47,21 @@ WanXiangHackathon ShangHai 19.9.15~19.9.16
 
 
 
+### Carla仿真数据
 
+#### 数据字段
+
+![carla](assets/carla.png)
+
+- Speed 速度
+- Heading 朝向
+- Location 位置
+- Height 高度
+- Throttle 节流阀
+- Steer 
+- Brake
+- Reverse
+- Hand Brake
+- Manual
+- Gear
 
