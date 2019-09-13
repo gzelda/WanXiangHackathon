@@ -65,3 +65,9 @@ WanXiangHackathon ShangHai 19.9.15~19.9.16
 - Manual
 - Gear
 
+### TODO LIST
+- 钥匙 + 高德地图 + 注册车牌信息 （GTY）
+- DashBoard (Bing)
+- Gaia + web3Provider(GTY & Bing)
+- Carla 视频生成（Bing） + Demo演示视频录制&剪辑（GTY）
+- PPT

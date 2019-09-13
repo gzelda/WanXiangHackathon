@@ -18,7 +18,7 @@ Take VehicleInfo_output0 as an example
 
 
 - rotation detail
-![](/assets/rotation.png)
+![](./assets/rotation.png)
 
 - 油门 (float)
 A scalar value to control the vehicle throttle [0.0, 1.0].
