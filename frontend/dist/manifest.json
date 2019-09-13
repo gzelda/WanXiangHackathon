@@ -1,7 +1,7 @@
 {
-  "name": "Todo App",
+  "name": "Smart Car Assistant",
   "start_url": "http://blockstack-todos.appartisan.com",
-  "description": "A simple todo app build on blockstack",
+  "description": "A IoT relevant app build on blockstack",
   "icons": [{
     "src": "http://blockstack-todos.appartisan.com/logo.png",
     "sizes": "400x400",
