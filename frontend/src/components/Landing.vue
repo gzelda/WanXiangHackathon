@@ -1,15 +1,14 @@
 <template>
-
   <div class="hello wall">
     <div>
       <h1>Gaia-Provider IOT System</h1>
-      <h3>Can't be evil</h3>
+      <h3><del>Don't</del>Can't be evil</h3>
       <!--
       <button class="btn btn-default bg-white" >Sign In With MetaMask</button>
       <br><br>
       -->
-
       <button class="btn btn-default bg-white" @click.prevent="signIn">Sign In</button>
+      
     </div>
   </div>
 </template>
@@ -19,13 +18,13 @@ import { userSession } from '../userSession'
 
 export default {
   name: 'landing',
-  data () {
+  data() {
     return {
 
     }
   },
   methods: {
-    signIn () {
+    signIn() {
       console.log(web3.eth.accounts[0])
       web3.eth.sign(web3.eth.accounts[0],
     "0x9dd2c369a187b4e6b9c402f030e50743e619301ea62aa4c0737d4ef7e10a3d49",function(a){
@@ -33,11 +32,10 @@ export default {
       userSession.redirectToSignIn()
     })
       /*
-      then(res=>{
+      then(res => {
           userSession.redirectToSignIn()
       });
       */
-      
     }
   },
   mounted(){
