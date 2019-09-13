@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Ethereum</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Ethereum" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill-rule="nonzero">
+            <path d="M0,24 C0,10.7451654 10.7451654,0 24,0 C37.2548346,0 48,10.7451654 48,24 C48,37.2548346 37.2548346,48 24,48 C10.7451654,48 0,37.2548346 0,24 Z" id="back" fill="#FFFFFF"></path>
+            <g id="Shape" transform="translate(15.200000, 9.600000)">
+                <polygon fill="#343434" points="8.83760112 0 8.6445652 0.656115108 8.6445652 19.6950561 8.83760112 19.8877468 17.6752645 14.6638274"></polygon>
+                <polygon fill="#8C8C8C" points="8.83766328 0 0 14.6638274 8.83766328 19.8878158 8.83766328 10.6468834"></polygon>
+                <polygon fill="#3C3C3B" points="8.83760112 21.561089 8.72882416 21.6936932 8.72882416 28.4757825 8.83760112 28.7935494 17.6805134 16.3397939"></polygon>
+                <polygon fill="#8C8C8C" points="8.83766328 28.7934526 8.83766328 21.5609922 0 16.3396973"></polygon>
+                <polygon fill="#141414" points="8.83760112 19.8877261 17.6751263 14.6638757 8.83760112 10.6469318"></polygon>
+                <polygon fill="#393939" points="6.21582734e-05 14.6638826 8.83758736 19.887733 8.83758736 10.6469387"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
