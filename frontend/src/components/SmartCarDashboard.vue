@@ -324,7 +324,7 @@ export default {
 
 <style scoped>
 .container {
-  width: 80%;
+  width: 90%;
 }
 
 .con2 {
@@ -353,6 +353,7 @@ export default {
   height: 200px;
   background-color: #eee;
   margin: 1em;
+  margin-bottom: 0em;
   color: #ff6600;
 }
 
@@ -361,6 +362,7 @@ export default {
   height: 200px;
   background: #eee;
   margin: 1em;
+  margin-bottom: 0em;
   color: #ff6600;
 }
 
@@ -369,6 +371,7 @@ export default {
   height: 200px;
   background: #eee;
   margin: 1em;
+  margin-bottom: 0em;
   color: #ff6600;
 }
 

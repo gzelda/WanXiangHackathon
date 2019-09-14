@@ -1,6 +1,6 @@
 <template>
     <div class="hello wall">
-        <div>
+        <div form-group>
             <form class="form-inline" role="form">
                 <label for="name">Vehicle's Org:</label>
                 <input type="text" class="form-control" id="name" placeholder="Please Input">
@@ -21,14 +21,14 @@
                 <label for="name">Owner's ID Number:</label>
                 <input type="text" class="form-control" id="name" placeholder="Please Input">
             </form>
-            <button class="btn btn-default " @click="$emit('change_Register',true)">
+            <button class="btn btn-default" @click="$emit('change_Register',true)">
                 Bind with CID
             </button>
             <div>
-                <button class="btn btn-default " @click="writeData">
+                <button class="btn btn-default" @click="writeData">
                     Write Data
                 </button>
-                <button class="btn btn-default " @click="readData">
+                <button class="btn btn-default" @click="readData">
                     Read Data
                 </button>
             </div>
@@ -37,7 +37,6 @@
                 <br><br>
                 -->            
         </div>  
-        
     </div>
     
 </template>

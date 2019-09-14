@@ -3,7 +3,7 @@
     <landing v-if="! userSession.isUserSignedIn()"></landing>
     <div v-else-if="user">
       <userinfo :user="user"></userinfo>
-      <CarRegister v-if="!isRegister" v-on:change_Register=changeRegister></CarRegister>
+      <CarRegister v-if="!isRegister" v-on:change_Register="changeRegister"></CarRegister>
       <SmartCarDashboard  v-else :user="user"></SmartCarDashboard>
     </div>
     <!-- <diagram v-if="user" :user="user"></diagram> -->
