@@ -2,7 +2,7 @@
 <div class="container">
     <h1 class="title">
             Smart Car Dashboard
-        </h1>
+    </h1>
   <div class="con2"> 
     <div class="terminal"> 
         <div class="terminal_text" id="terminal_text">

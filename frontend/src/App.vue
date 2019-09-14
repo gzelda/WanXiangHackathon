@@ -8,4 +8,5 @@ export default {
 }
 </script>
 
+
 <style src="@/assets/sass/app.scss" lang="scss"></style>
