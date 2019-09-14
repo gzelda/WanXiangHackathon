@@ -1,18 +1,27 @@
 <template>
   <div class="hello wall">
     <div>
-      <h1>Gaia-Provider IOT System</h1>
+      <h1>Vehicle-Assistant IOT System</h1>
       <h3><del>Don't</del> Can't be evil</h3>
       <!--
       <button class="btn btn-default bg-white" >Sign In With MetaMask</button>
       <br><br>
       -->
-      <router-view />
-      <button class="btn btn-default bg-white" @click.prevent="signIn">Sign In</button>
+      <button class="btn btn-default bg-white" @click.prevent="signIn">Vehicle Sign In</button>
       <!-- <button class="btn" @click="goDashboard">GO Dashboard</button> -->
-      <button class="btn btn-default">
-        <router-link to="/dashboard">Go to Car Dashboard</router-link>
-      </button>
+      <div>
+          <!--
+          <button class="btn btn-default ">
+            <router-link to="/carRegister"> Vehicle Sign In</router-link>
+          </button>
+          -->
+          <button class="btn btn-default ">
+            <router-link to="/dashboard"> BING DEBUG Go to Car Dashboard</router-link>
+          </button>
+
+          
+      </div>
+      
     </div>
   </div>
 </template>

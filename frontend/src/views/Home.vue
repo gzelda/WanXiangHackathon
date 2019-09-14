@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <landing v-if="! userSession.isUserSignedIn()"></landing>
+
     <userinfo v-if="user" :user="user"></userinfo>
     <rawdata v-if="user" :user="user"></rawdata>
+
     <!-- <diagram v-if="user" :user="user"></diagram> -->
     <small class="creds">
-      Source code on <a href="https://github.com/tyGavinZJU/Gaia-Provider" target="_blank">Github</a>
+      Source code on <a href="https://github.com/tyGavinZJU/WanXiangHackathon" target="_blank">Github</a>
     </small>
   </div>
 </template>
@@ -28,13 +30,26 @@ export default {
     if (userSession.isUserSignedIn()) {
       this.userData = userSession.loadUserData()
       this.user = new Person(this.userData.profile)
+    
       this.user.username = this.userData.username
+      console.log("this.user:",this.user)
     } else if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn()
         .then((userData) => {
           window.location = window.location.origin
         })
     }
+  },
+  fetchData () {
+      userSession.getFile(STORAGE_FILE) // decryption is enabled by default
+        .then((text) => {
+          console.log('rawdata:', text)
+          var md5 = crypto.createHash('md5')
+          var result = md5.update(text)
+
+          var t = result.digest('hex')
+          console.log('crptoData', t)
+        })
   },
   data () {
     return {
