@@ -212,8 +212,6 @@ export default {
         		else alert("transaction falied");
   			});
 
-
-    
     },
     fetchData () {
       userSession.getFile(STORAGE_FILE) // decryption is enabled by default
@@ -328,6 +326,5 @@ export default {
     width:150px;
     background-size:100% 100%;
 }
-
 
 </style>

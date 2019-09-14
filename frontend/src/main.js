@@ -10,6 +10,6 @@ Vue.config.productionTip = false
 Vue.use(animated)
 
 new Vue({
-  router,
+  router, // 使用路由器
   render: h => h(App)
 }).$mount('#app')

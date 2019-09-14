@@ -7,8 +7,12 @@
       <button class="btn btn-default bg-white" >Sign In With MetaMask</button>
       <br><br>
       -->
+      <router-view />
       <button class="btn btn-default bg-white" @click.prevent="signIn">Sign In</button>
-      
+      <!-- <button class="btn" @click="goDashboard">GO Dashboard</button> -->
+      <button class="btn btn-default">
+        <router-link to="/dashboard">Go to Dashboard</router-link>
+      </button>
     </div>
   </div>
 </template>
@@ -36,6 +40,9 @@ export default {
           userSession.redirectToSignIn()
       });
       */
+    },
+    goDashboard() {
+      alert("Dashbaord!")
     }
   },
   mounted(){

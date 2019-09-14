@@ -48,12 +48,12 @@ export default {
 <style scoped>
 
 .app {
-            display:flex;
-            flex-direction:column;
-            justify-content: center;
-            height:100%;
-            overflow:auto;
-            background-color: rgb(20,18,19)
-      }
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  height:100%;
+  overflow:auto;
+  background-color: rgb(20,18,19)
+}
 
 </style>
