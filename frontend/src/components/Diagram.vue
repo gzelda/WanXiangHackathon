@@ -1,8 +1,8 @@
 <template>
   <div class="block">
     <div class="gaia_ok"></div>
-    <div class="gaia_upload"></div>  
-    <div class="eth"></div> 
+    <div class="gaia_upload"></div>
+    <div class="eth"></div>
   </div>
 </template>
 
@@ -13,11 +13,11 @@ export default {
   props: ['user'],
   data () {
     return {
-       
+
     }
   },
   methods: {
-    
+
   }
 }
 </script>

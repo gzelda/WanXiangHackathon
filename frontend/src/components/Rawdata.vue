@@ -1,14 +1,14 @@
 <template>
 <div class="container">
-  <div class="con2"> 
-    <div class="terminal"> 
+  <div class="con2">
+    <div class="terminal">
         <div class="terminal_text" id="terminal_text">
         </div>
         <div style="width:20px"></div>
         <div class="terminal_text2" id="terminal_text2">
         </div>
     </div>
-    
+
     <div class="con3" v-if="false">
       <div class="con2r" style="width:33%">
           <div class="device pic"></div>
@@ -30,7 +30,7 @@
 import { userSession } from '../userSession'
 var STORAGE_FILE = 'sd.json'
 
-var crypto = require('crypto');
+var crypto = require('crypto')
 var senRawData = require('./SensorData.json')
 var senData = senRawData.data
 console.log(web3)
@@ -41,197 +41,193 @@ export default {
   props: ['user'],
   data () {
     return {
-      timer:"",
+      timer: '',
       count: 0,
-      data:'',
-      upload:false,
-      timer2:""
+      data: '',
+      upload: false,
+      timer2: ''
     }
   },
   methods: {
-    sensorOutput(){
+    sensorOutput () {
       userSession.putFile(STORAGE_FILE, JSON.stringify(this.data))
     },
-    sensorInput(){
+    sensorInput () {
       console.log(this.count)
       var t = senData[this.count].sensorSteam
       this.data += t
-      //console.log(t)
-      var textdiv = document.getElementById("terminal_text");
-      var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
-      var url = t.match(reg);
-      if (url!=null){
-        textdiv.innerHTML += '<a target="_blank" href="'+t+'">'+senData[this.count].sensorSteam+'</a><br>';
+      // console.log(t)
+      var textdiv = document.getElementById('terminal_text')
+      var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g
+      var url = t.match(reg)
+      if (url != null) {
+        textdiv.innerHTML += '<a target="_blank" href="' + t + '">' + senData[this.count].sensorSteam + '</a><br>'
+      } else {
+        textdiv.innerHTML += t + '<br>'
       }
-      else{
-        textdiv.innerHTML += t + '<br>';
-      }
-      textdiv.scrollTop = textdiv.scrollHeight;
+      textdiv.scrollTop = textdiv.scrollHeight
 
-      //this.data += senData[this.count].sensorSteam + ' \n '
+      // this.data += senData[this.count].sensorSteam + ' \n '
       this.count = this.count + 1
       if (this.count == senData.length) this.count = 0
-      
-      
     },
-    fingerprint(){
-      var md5 = crypto.createHash('md5');
-      var result = md5.update(this.data);
+    fingerprint () {
+      var md5 = crypto.createHash('md5')
+      var result = md5.update(this.data)
 
-      var t = result.digest("hex");
-      console.log(t);
-      var textdiv = document.getElementById("terminal_text2");
-      textdiv.innerHTML += t + '<br>';
-      textdiv.scrollTop = textdiv.scrollHeight;
+      var t = result.digest('hex')
+      console.log(t)
+      var textdiv = document.getElementById('terminal_text2')
+      textdiv.innerHTML += t + '<br>'
+      textdiv.scrollTop = textdiv.scrollHeight
       var ContractABI = web3.eth.contract([
         {
-          "constant": false,
-          "inputs": [
+          'constant': false,
+          'inputs': [
             {
-              "name": "newHash",
-              "type": "string"
+              'name': 'newHash',
+              'type': 'string'
             }
           ],
-          "name": "recordHash",
-          "outputs": [
+          'name': 'recordHash',
+          'outputs': [
             {
-              "name": "",
-              "type": "uint256"
+              'name': '',
+              'type': 'uint256'
             }
           ],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
+          'payable': false,
+          'stateMutability': 'nonpayable',
+          'type': 'function'
         },
         {
-          "constant": false,
-          "inputs": [
+          'constant': false,
+          'inputs': [
             {
-              "name": "newOwner",
-              "type": "address"
+              'name': 'newOwner',
+              'type': 'address'
             }
           ],
-          "name": "transferOwnership",
-          "outputs": [],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "function"
+          'name': 'transferOwnership',
+          'outputs': [],
+          'payable': false,
+          'stateMutability': 'nonpayable',
+          'type': 'function'
         },
         {
-          "inputs": [],
-          "payable": false,
-          "stateMutability": "nonpayable",
-          "type": "constructor"
+          'inputs': [],
+          'payable': false,
+          'stateMutability': 'nonpayable',
+          'type': 'constructor'
         },
         {
-          "anonymous": false,
-          "inputs": [
+          'anonymous': false,
+          'inputs': [
             {
-              "indexed": true,
-              "name": "index",
-              "type": "uint256"
+              'indexed': true,
+              'name': 'index',
+              'type': 'uint256'
             },
             {
-              "indexed": false,
-              "name": "recordedHash",
-              "type": "string"
+              'indexed': false,
+              'name': 'recordedHash',
+              'type': 'string'
             }
           ],
-          "name": "RecordHash",
-          "type": "event"
+          'name': 'RecordHash',
+          'type': 'event'
         },
         {
-          "anonymous": false,
-          "inputs": [
+          'anonymous': false,
+          'inputs': [
             {
-              "indexed": true,
-              "name": "previousOwner",
-              "type": "address"
+              'indexed': true,
+              'name': 'previousOwner',
+              'type': 'address'
             },
             {
-              "indexed": true,
-              "name": "newOwner",
-              "type": "address"
+              'indexed': true,
+              'name': 'newOwner',
+              'type': 'address'
             }
           ],
-          "name": "OwnershipTransferred",
-          "type": "event"
+          'name': 'OwnershipTransferred',
+          'type': 'event'
         },
         {
-          "constant": true,
-          "inputs": [],
-          "name": "owner",
-          "outputs": [
+          'constant': true,
+          'inputs': [],
+          'name': 'owner',
+          'outputs': [
             {
-              "name": "",
-              "type": "address"
+              'name': '',
+              'type': 'address'
             }
           ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
+          'payable': false,
+          'stateMutability': 'view',
+          'type': 'function'
         },
         {
-          "constant": true,
-          "inputs": [],
-          "name": "recordNum",
-          "outputs": [
+          'constant': true,
+          'inputs': [],
+          'name': 'recordNum',
+          'outputs': [
             {
-              "name": "",
-              "type": "uint256"
+              'name': '',
+              'type': 'uint256'
             }
           ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
+          'payable': false,
+          'stateMutability': 'view',
+          'type': 'function'
         },
         {
-          "constant": true,
-          "inputs": [
+          'constant': true,
+          'inputs': [
             {
-              "name": "",
-              "type": "uint256"
+              'name': '',
+              'type': 'uint256'
             }
           ],
-          "name": "records",
-          "outputs": [
+          'name': 'records',
+          'outputs': [
             {
-              "name": "",
-              "type": "string"
+              'name': '',
+              'type': 'string'
             }
           ],
-          "payable": false,
-          "stateMutability": "view",
-          "type": "function"
+          'payable': false,
+          'stateMutability': 'view',
+          'type': 'function'
         }
-      ]);
-    var Contract = ContractABI.at('0xd92aac5e0bf1116ac366d590329459eab3679671');
-    Contract.recordHash(t, 
-        	function(err, res){
-        		if (!err) alert("transaction success");
-        		else alert("transaction falied");
-  			});
-
+      ])
+      var Contract = ContractABI.at('0xd92aac5e0bf1116ac366d590329459eab3679671')
+      Contract.recordHash(t,
+        	function (err, res) {
+        		if (!err) alert('transaction success')
+        		else alert('transaction falied')
+  			})
     },
     fetchData () {
       userSession.getFile(STORAGE_FILE) // decryption is enabled by default
         .then((text) => {
-            console.log("rawdata:",text);
-            var md5 = crypto.createHash('md5');
-            var result = md5.update(text);
+          console.log('rawdata:', text)
+          var md5 = crypto.createHash('md5')
+          var result = md5.update(text)
 
-            var t = result.digest("hex");
-            console.log("crptoData",t);
-          })
+          var t = result.digest('hex')
+          console.log('crptoData', t)
+        })
     },
-    ssync(){
-      this.timer = setInterval(this.sensorInput, 100);
-      this.timer2 = setInterval(this.fingerprint , 15000);
-      this.time3 = setInterval(this.sensorOutput , 10000);
+    ssync () {
+      this.timer = setInterval(this.sensorInput, 100)
+      this.timer2 = setInterval(this.fingerprint, 15000)
+      this.time3 = setInterval(this.sensorOutput, 10000)
     }
 
   },
-  mounted(){
+  mounted () {
     this.ssync()
     this.fetchData()
   }
@@ -303,7 +299,6 @@ export default {
     scrollbar-base-color:#ff6600;
 }
 
-
 .gaia_ok{
     background: url(../assets/gaia_ok.png);
 }
@@ -318,7 +313,7 @@ export default {
 
 .device{
     background: url(../assets/device.png);
-    
+
 }
 
 .pic{

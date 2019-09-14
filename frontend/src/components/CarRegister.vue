@@ -6,8 +6,7 @@
 
 <script>
 export default {
-    name: "CarRegister",
-
+  name: 'CarRegister'
 }
 </script>
 
