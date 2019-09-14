@@ -1,27 +1,35 @@
 <template>
   <div class="container">
     <h1 class="title">Dashboard</h1>
-
     <div class="row">
-      <div class="person-view col-sm">
-        <h4 class="title">人</h4>
-        <ul>
-          <li>x</li>
-          <li>y</li>
-          <li>z</li>
-        </ul>
-      </div>
+      <!-- driver -->
       <div class="car-view col-sm">
-        <h4>车</h4>
+        <h4>Driver</h4>
         <ul>
-          <li>速度</li>
-          <li>刹车</li>
-          <li>油门</li>
+          <li>gas: {{ driver.gas.substr() }}</li>
+          <li>direction: {{ driver.direction }}</li>
+          <li>brake: {{ driver.brake }}</li>
+          <li>is_hand_brake {{ driver.is_hand_brake }}</li>
+          <li>is_reverse_gear: {{ driver.is_reverse_gear }}</li>
+          <li>forward_gear: {{ driver.forward_gear }}</li>
         </ul>
       </div>
+      <!-- vehicle-info -->
+      <div class="person-view col-sm">
+        <h4 class="title">Vehicle</h4>
+        <ul>
+          <li>loc_x: {{ vehicle.loc_x }}</li>
+          <li>loc_y: {{ vehicle.loc_y }}</li>
+          <li>loc_z: {{ vehicle.loc_z }}</li>
+          <li>pitch: {{ vehicle.pitch }}</li>
+          <li>yaw: {{ vehicle.yaw }}</li>
+          <li>roll: {{ vehicle.roll }}</li>
+        </ul>
+      </div>
+
       <div class="car-vision col-sm">
         <h4>图</h4>
-        <img src=""/>
+        <img src />
       </div>
     </div>
 
@@ -51,22 +59,49 @@
 <script>
 import { userSession } from "../userSession";
 var STORAGE_FILE = "sd.json";
-
 var crypto = require("crypto");
 var senRawData = require("./SensorData.json");
+var output0RawData = require("../datasets/output0.json");
+
 var senData = senRawData.data;
-console.log(web3);
-console.log(senData.length);
+var output0Data = output0RawData.data; 
+
+// console.log(web3);
+// console.log("senData length: ", senData.length);
+// console.log("output0 data length: ", output0Data.length);
+// console.log("output0 第一条数据: ", output0Data[0]);
+
 export default {
   name: "rawdata",
-  props: ["user"],
+  //   props: ["user"],
   data() {
     return {
       timer: "",
       count: 0,
       data: "",
       upload: false,
-      timer2: ""
+      timer2: "",
+      countFrame: 0,
+      frameSecond: 30,
+      framesUpdateInterval: 15,
+      // vehicle-info
+      vehicle: {
+        loc_x: "1",
+        loc_y: "2",
+        loc_z: "3",
+        pitch: "",
+        yaw:"",
+        roll: "",
+      },
+      // driver
+      driver: {
+        gas: "",  
+        direction: "",
+        brake:"",
+        is_hand_brake: "",
+        is_reverse_gear: "",
+        forward_gear: ""
+      },
     };
   },
   methods: {
@@ -74,7 +109,7 @@ export default {
       userSession.putFile(STORAGE_FILE, JSON.stringify(this.data));
     },
     sensorInput() {
-      console.log(this.count);
+    //   console.log(this.count);
       var t = senData[this.count].sensorSteam;
       this.data += t;
       // console.log(t)
@@ -236,7 +271,6 @@ export default {
         else alert("transaction falied");
       });
     },
-
     fetchData() {
       userSession
         .getFile(STORAGE_FILE) // decryption is enabled by default
@@ -249,11 +283,23 @@ export default {
           console.log("crptoData", t);
         });
     },
+    
+    // vehicle-info
+    updateFrame() {
+        console.log("frame count: ", this.countFrame)
+        this.countFrame += this.frameSecond
+        this.countFrame %= output0Data.length
+        console.log(output0Data[0])
+        this.vehicle = output0Data[this.countFrame].vehicle_info
+        this.driver = output0Data[this.countFrame].driver
+    },
     ssync() {
       this.timer = setInterval(this.sensorInput, 100);
       this.timer2 = setInterval(this.fingerprint, 15000);
       this.time3 = setInterval(this.sensorOutput, 10000);
-    }
+      setInterval(this.updateFrame, 
+        1000.0 * this.framesUpdateInterval / this.frameSecond);
+    },
   },
   mounted() {
     this.ssync();

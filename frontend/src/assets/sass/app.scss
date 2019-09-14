@@ -5,9 +5,14 @@
 @import "variables";
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
+body {
+  background-image: url('../background.png'); 
+  background-size: 100% 100%;
+}
+
 html, body, #app {
   // 整体背景色色调
-  background-color: rgb(77, 37, 63); // 57, 33, 49
+  // background-color: rgb(57, 33, 49); // 57, 33, 49
   height: 100%;
 }
 
