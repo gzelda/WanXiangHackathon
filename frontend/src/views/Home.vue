@@ -8,6 +8,8 @@
     </div>
     <!-- <diagram v-if="user" :user="user"></diagram> -->
     <small class="creds">
+      All rights reserved by <del>Don't</del> Can't be evil
+      <br/>
       Source code on <a href="https://github.com/tyGavinZJU/WanXiangHackathon" target="_blank">Github</a>
     </small>
   </div>

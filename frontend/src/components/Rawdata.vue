@@ -246,7 +246,7 @@ export default {
   height:100%;
   justify-content: center;
   align-content: center;
-  padding:100px 0 0 0;
+  padding:0 0 0 0;
 }
 
 .con2r {
