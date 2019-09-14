@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <h1 class="title">Dashboard</h1>
+    <h3 class="title">Dashboard</h3>
     <div class="row">
       <!-- driver -->
       <div class="car-view col-sm">
-        <h4>Driver</h4>
+        <h5>Driver</h5>
         <ul>
           <li>gas: {{ driver.gas.substr() }}</li>
           <li>direction: {{ driver.direction }}</li>
@@ -16,7 +16,7 @@
       </div>
       <!-- vehicle-info -->
       <div class="person-view col-sm">
-        <h4 class="title">Vehicle</h4>
+        <h5 class="title">Vehicle</h5>
         <ul>
           <li>loc_x: {{ vehicle.loc_x }}</li>
           <li>loc_y: {{ vehicle.loc_y }}</li>
@@ -28,13 +28,13 @@
       </div>
 
       <div class="car-vision col-sm">
-        <h4>图</h4>
+        <h5>图</h5>
         <!-- <img style="width: 200px;height: 100px;" :src="getImgUrl()"/> -->
         <img style="width: 300px;height: 150px;" :src="require(`../assets/datasets/output0/00${frame}_rgb.png`)"/>
         <!-- <img src="../assets/datasets/output0/006579_rgb.png"/> -->
       </div>
     </div>
-
+    <h3 class="title">Crypto Data</h3>
     <div class="con2">
       <div class="terminal">
         <div class="terminal_text" id="terminal_text"></div>
@@ -333,7 +333,7 @@ export default {
   height: 100%;
   justify-content: center;
   align-content: center;
-  padding: 100px 0 0 0;
+  padding: 0 0 0 0;
 }
 
 .con2r {
@@ -375,12 +375,13 @@ export default {
 .terminal {
   border-style: solid;
   width: 100%;
-  height: 300px;
+  height: 240px;
   border-width: 1px 1px 1px 1px;
   border-color: rgb(249, 246, 239);
   display: flex;
   justify-content: center;
   align-content: center;
+  margin-top: 10px;
 }
 .terminal_text2 {
   overflow-y: scroll;
