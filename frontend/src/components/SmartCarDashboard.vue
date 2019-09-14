@@ -29,7 +29,8 @@
 
       <div class="car-vision col-sm">
         <h4>图</h4>
-        <img src />
+        <img style="width: 200px;height: 100px;" :src="getImgUrl()"/>
+        <!-- <img src="../assets/datasets/output0/006579_rgb.png"/> -->
       </div>
     </div>
 
@@ -58,10 +59,11 @@
 
 <script>
 import { userSession } from "../userSession";
+
 var STORAGE_FILE = "sd.json";
 var crypto = require("crypto");
 var senRawData = require("./SensorData.json");
-var output0RawData = require("../datasets/output0.json");
+var output0RawData = require("../assets/datasets/output0.json");
 
 var senData = senRawData.data;
 var output0Data = output0RawData.data; 
@@ -72,15 +74,17 @@ var output0Data = output0RawData.data;
 // console.log("output0 第一条数据: ", output0Data[0]);
 
 export default {
-  name: "rawdata",
+  name: "scdb",
   //   props: ["user"],
   data() {
     return {
+      image_datset_base: '/static/datasets/output0/',
       timer: "",
       count: 0,
       data: "",
       upload: false,
       timer2: "",
+      frame: 3798,
       countFrame: 0,
       frameSecond: 30,
       framesUpdateInterval: 15,
@@ -104,7 +108,15 @@ export default {
       },
     };
   },
+  computed: {
+      
+  },
   methods: {
+    getImgUrl() {
+        let img_url = this.image_datset_base + "00" + this.frame + '_rgb.png'
+        console.log(img_url)
+        return img_url
+    },
     sensorOutput() {
       userSession.putFile(STORAGE_FILE, JSON.stringify(this.data));
     },
@@ -289,12 +301,13 @@ export default {
         console.log("frame count: ", this.countFrame)
         this.countFrame += this.frameSecond
         this.countFrame %= output0Data.length
-        console.log(output0Data[0])
+        console.log(output0Data[this.countFrame])
         this.vehicle = output0Data[this.countFrame].vehicle_info
         this.driver = output0Data[this.countFrame].driver
+        this.frame = output0Data[this.countFrame].frame
     },
     ssync() {
-      this.timer = setInterval(this.sensorInput, 100);
+      this.timer = setInterval(this.sensorInput, 10000);
       this.timer2 = setInterval(this.fingerprint, 15000);
       this.time3 = setInterval(this.sensorOutput, 10000);
       setInterval(this.updateFrame, 
