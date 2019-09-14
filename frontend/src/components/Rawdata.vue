@@ -34,7 +34,7 @@ var crypto = require('crypto')
 var senRawData = require('./SensorData.json')
 var senData = senRawData.data
 console.log(web3)
-console.log(senData.length)
+//console.log(senData.length)
 export default {
 
   name: 'rawdata',
@@ -53,7 +53,7 @@ export default {
       userSession.putFile(STORAGE_FILE, JSON.stringify(this.data))
     },
     sensorInput () {
-      console.log(this.count)
+      //console.log(this.count)
       var t = senData[this.count].sensorSteam
       this.data += t
       // console.log(t)
@@ -76,7 +76,7 @@ export default {
       var result = md5.update(this.data)
 
       var t = result.digest('hex')
-      console.log(t)
+      //console.log(t)
       var textdiv = document.getElementById('terminal_text2')
       textdiv.innerHTML += t + '<br>'
       textdiv.scrollTop = textdiv.scrollHeight
@@ -212,12 +212,12 @@ export default {
     fetchData () {
       userSession.getFile(STORAGE_FILE) // decryption is enabled by default
         .then((text) => {
-          console.log('rawdata:', text)
+          //console.log('rawdata:', text)
           var md5 = crypto.createHash('md5')
           var result = md5.update(text)
 
           var t = result.digest('hex')
-          console.log('crptoData', t)
+          //console.log('crptoData', t)
         })
     },
     ssync () {

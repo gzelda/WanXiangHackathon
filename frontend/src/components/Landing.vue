@@ -1,18 +1,27 @@
 <template>
   <div class="hello wall">
     <div>
-      <h1>Gaia-Provider IOT System</h1>
+      <h1>Vehicle-Assistant IOT System</h1>
       <h3><del>Don't</del> Can't be evil</h3>
       <!--
       <button class="btn btn-default bg-white" >Sign In With MetaMask</button>
       <br><br>
       -->
-      <router-view />
-      <button class="btn btn-default bg-white" @click.prevent="signIn">Sign In</button>
+      <button class="btn btn-default bg-white" @click.prevent="signIn">Vehicle Sign In</button>
       <!-- <button class="btn" @click="goDashboard">GO Dashboard</button> -->
-      <button class="btn btn-default">
-        <router-link to="/dashboard">Go to Car Dashboard</router-link>
-      </button>
+      <div>
+          <!--
+          <button class="btn btn-default ">
+            <router-link to="/carRegister"> Vehicle Sign In</router-link>
+          </button>
+          -->
+          <button class="btn btn-default ">
+            <router-link to="/dashboard"> BING DEBUG Go to Car Dashboard</router-link>
+          </button>
+
+          
+      </div>
+      
     </div>
   </div>
 </template>
@@ -27,17 +36,20 @@ export default {
   },
   methods: {
     signIn () {
+      
       console.log(web3.eth.accounts[0])
       web3.eth.sign(web3.eth.accounts[0],
         '0x9dd2c369a187b4e6b9c402f030e50743e619301ea62aa4c0737d4ef7e10a3d49', function (a) {
           console.log(a)
           userSession.redirectToSignIn()
         })
+        
       /*
       then(res => {
           userSession.redirectToSignIn()
       });
       */
+      //userSession.redirectToSignIn()
     },
     goDashboard () {
       alert('Dashbaord!')
