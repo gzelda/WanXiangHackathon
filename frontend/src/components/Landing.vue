@@ -1,7 +1,7 @@
 <template>
   <div class="hello wall">
     <div>
-      <h1>Vehicle-Assistant IOT System</h1>
+      <h1>KARMA-Agent System </h1>
       <h3><del>Don't</del> Can't be evil</h3>
       <!--
       <button class="btn btn-default bg-white" >Sign In With MetaMask</button>

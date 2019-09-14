@@ -294,7 +294,7 @@ export default {
         this.driver = output0Data[this.countFrame].driver
     },
     ssync() {
-      this.timer = setInterval(this.sensorInput, 100);
+      this.timer = setInterval(this.sensorInput, 10000);
       this.timer2 = setInterval(this.fingerprint, 15000);
       this.time3 = setInterval(this.sensorOutput, 10000);
       setInterval(this.updateFrame, 

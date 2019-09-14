@@ -4,7 +4,7 @@
     <div v-else-if="user">
       <userinfo :user="user"></userinfo>
       <CarRegister v-if="!isRegister" v-on:change_Register=changeRegister></CarRegister>
-      <rawdata  v-else :user="user"></rawdata>
+      <SmartCarDashboard  v-else :user="user"></SmartCarDashboard>
     </div>
     <!-- <diagram v-if="user" :user="user"></diagram> -->
     <small class="creds">
@@ -19,12 +19,13 @@ import Userinfo from '@/components/Userinfo.vue'
 import Rawdata from '@/components/Rawdata.vue'
 import Diagram from '@/components/Diagram.vue'
 import CarRegister from "@/components/CarRegister.vue"
+import SmartCarDashboard from "@/components/SmartCarDashboard.vue"
 import { Person } from 'blockstack'
 import { userSession } from '../userSession'
 
 export default {
   name: 'Home',
-  components: { Landing, Userinfo, Rawdata, Diagram,CarRegister },
+  components: { Landing, Userinfo, Rawdata, Diagram,CarRegister,SmartCarDashboard },
   created () {
     this.userSession = userSession
   },
@@ -38,7 +39,6 @@ export default {
       userSession: null,
       user: null,
       isRegister: false,
-
     }
   },
   mounted () {
