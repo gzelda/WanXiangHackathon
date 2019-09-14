@@ -1,31 +1,37 @@
 <template>
     <div class="hello wall">
-        <h1 class="title">Basic Car Info Form</h1>
-        <h3><del>Don't</del> Can't be evil</h3>
         <div>
             <form class="form-inline" role="form">
                 <label for="name">Vehicle's Org:</label>
-                <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                <input type="text" class="form-control" id="name" placeholder="Please Input">
             </form><br>
             <form class="form-inline" role="form">
                 <label for="name">Vehicle's Number:</label>
-                <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                <input type="text" class="form-control" id="name" placeholder="Please Input">
             </form><br>
             <form class="form-inline" role="form">
                 <label for="name">Vehicle's Type:</label>
-                <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                <input type="text" class="form-control" id="name" placeholder="Please Input">
             </form><br>
             <form class="form-inline" role="form">
                 <label for="name">Vehicle's Color:</label>
-                <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                <input type="text" class="form-control" id="name" placeholder="Please Input">
             </form><br>
             <form class="form-inline" role="form">
                 <label for="name">Owner's ID Number:</label>
-                <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                <input type="text" class="form-control" id="name" placeholder="Please Input">
             </form>
-            <button class="btn btn-default ">
-                <router-link to="/dashboard"> Bind with CID </router-link>
+            <button class="btn btn-default " @click="$emit('change_Register',true)">
+                Bind with CID
             </button>
+            <div>
+                <button class="btn btn-default " @click="writeData">
+                    Write Data
+                </button>
+                <button class="btn btn-default " @click="readData">
+                    Read Data
+                </button>
+            </div>
                 <!--
                 <button class="btn btn-default bg-white" >Sign In With MetaMask</button>
                 <br><br>
@@ -41,9 +47,23 @@ import Landing from '@/components/Landing.vue'
 import Userinfo from '@/components/Userinfo.vue'
 import Rawdata from '@/components/Rawdata.vue'
 import Diagram from '@/components/Diagram.vue'
+import { Person } from 'blockstack'
+import { userSession } from '../userSession'
+var CarRegister_STORAGE_FILE = 'CRtemp.json'
 export default {
     components: { Landing, Userinfo, Rawdata, Diagram },
-    name: 'CarRegister'
+    name: 'CarRegister',
+    methods:{
+        writeData () {
+            userSession.putFile(CarRegister_STORAGE_FILE, JSON.stringify("123"))
+        },
+        readData(){
+            userSession.getFile(CarRegister_STORAGE_FILE) // decryption is enabled by default
+            .then((text) => {
+                console.log('rawdata:', text)
+            })
+        }
+    }
 }
 </script>
 

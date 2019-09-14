@@ -36,17 +36,20 @@ export default {
   },
   methods: {
     signIn () {
+      
       console.log(web3.eth.accounts[0])
       web3.eth.sign(web3.eth.accounts[0],
         '0x9dd2c369a187b4e6b9c402f030e50743e619301ea62aa4c0737d4ef7e10a3d49', function (a) {
           console.log(a)
           userSession.redirectToSignIn()
         })
+        
       /*
       then(res => {
           userSession.redirectToSignIn()
       });
       */
+      //userSession.redirectToSignIn()
     },
     goDashboard () {
       alert('Dashbaord!')
