@@ -28,9 +28,9 @@
       </div>
 
       <div class="car-vision col-sm">
-        <h5>图</h5>
+        <h5>Frame</h5>
         <!-- <img style="width: 200px;height: 100px;" :src="getImgUrl()"/> -->
-        <img style="width: 300px;height: 150px;" :src="require(`../assets/datasets/output0/00${frame}_rgb.png`)"/>
+        <img style="width: 310px;height: 150px;" :src="require(`../assets/datasets/output0/00${frame}_rgb.png`)"/>
         <!-- <img src="../assets/datasets/output0/006579_rgb.png"/> -->
       </div>
     </div>
@@ -353,7 +353,6 @@ export default {
   height: 200px;
   background-color: #eee;
   margin: 1em;
-  margin-bottom: 0em;
   color: #ff6600;
 }
 
@@ -362,7 +361,6 @@ export default {
   height: 200px;
   background: #eee;
   margin: 1em;
-  margin-bottom: 0em;
   color: #ff6600;
 }
 
@@ -371,7 +369,6 @@ export default {
   height: 200px;
   background: #eee;
   margin: 1em;
-  margin-bottom: 0em;
   color: #ff6600;
 }
 
