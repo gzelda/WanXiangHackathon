@@ -34,7 +34,7 @@
         <!-- <img src="../assets/datasets/output0/006579_rgb.png"/> -->
       </div>
     </div>
-    <h3 class="title">Crypto Data</h3>
+    <h3 class="title">Encrypted Data</h3>
     <div class="con2">
       <div class="terminal">
         <div class="terminal_text" id="terminal_text"></div>
@@ -121,14 +121,37 @@ export default {
     //     console.log(img_url)
     //     return img_url
     // },
+    toHex(str)  {
+      var result = ""
+      for (var i=0;i<str.length;i++){
+        result += str.charCodeAt(i).toString(16)
+      }
+      return result
+    },
     sensorOutput() {
       userSession.putFile(STORAGE_FILE, JSON.stringify(this.data));
     },
     sensorInput() {
     //   console.log(this.count);
-      var t = senData[this.count].sensorSteam;
+      var vehicle = this.vehicle.loc_x + 
+                      this.vehicle.loc_y + 
+                      this.vehicle.loc_z + 
+                      this.vehicle.pitch + 
+                      this.vehicle.yaw + 
+                      this.vehicle.roll
+      var driver = this.driver.gas + 
+                  this.driver.direction + 
+                  this.driver.brake + 
+                  this.driver.is_hand_brake +
+                  this.driver.is_reverse_gear +
+                  this.driver.forward_gear
+      var t = (vehicle + driver).toString()
+      
+      t = this.toHex(t)
+      //var t = senData[this.count].sensorSteam;
       this.data += t;
-      // console.log(t)
+      //console.log("t:",t)
+      //console.log("t Hex:",typeof(this.toHex(t)))
       var textdiv = document.getElementById("terminal_text");
       var reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
       var url = t.match(reg);
@@ -311,7 +334,7 @@ export default {
         this.frame = output0Data[this.countFrame].frame
     },
     ssync() {
-      this.timer = setInterval(this.sensorInput, 10000);
+      this.timer = setInterval(this.sensorInput, 1000);
       this.timer2 = setInterval(this.fingerprint, 15000);
       this.time3 = setInterval(this.sensorOutput, 10000);
       setInterval(this.updateFrame, 
