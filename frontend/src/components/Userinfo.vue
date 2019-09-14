@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-8 col-md-offset-2">
-          <h1 class="page-header align-middle color1">Gaia-evm IOT System
+          <h1 class="page-header align-middle color1">KARMA-Agent System 
             <img :src="user.avatarUrl() ? user.avatarUrl() : '/avatar-placeholder.png'" class="avatar">
             <small><span class="sign-out color1">(<a href="#" @click.prevent="signOut" class="color1">Sign Out</a>)</span></small>
           </h1>
