@@ -1,28 +1,58 @@
 <template>
   <div class="container">
     <div class="bs-example">
-      <form role="form">
+      <form role="form" @submit="checkForm">
         <div class="form-group">
           <label for="name">Vehicle's Org:</label>
-          <input type="text" class="placeholder form-control" id="name" placeholder="Please Input" />
+          <input
+            type="text"
+            class="placeholder form-control"
+            id="name"
+            v-model="org"
+            placeholder="Please Input"
+          />
         </div>
         <div class="form-group">
           <label for="name">Vehicle's Number:</label>
-          <input type="text" class="form-control" id="name" placeholder="Please Input" />
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            v-model="number"
+            placeholder="Please Input"
+          />
         </div>
         <div class="form-group">
           <label for="name">Vehicle's Type:</label>
-          <input type="text" class="form-control" id="name" placeholder="Please Input" />
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            v-model="type"
+            placeholder="Please Input"
+          />
         </div>
         <div class="form-group">
           <label for="name">Vehicle's Color:</label>
-          <input type="text" class="form-control" id="name" placeholder="Please Input" />
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            v-model="color"
+            placeholder="Please Input"
+          />
         </div>
         <div class="form-group">
           <label for="name">Owner's ID Number:</label>
-          <input type="text" class="form-control" id="name" placeholder="Please Input" />
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            v-model="IDNumber"
+            placeholder="Please Input"
+          />
         </div>
-        <button class="btn btn-success bind-text" @click="$emit('change_Register',true)">Bind with CID</button>
+        <button class="btn btn-success bind-text" @click="bindCID">Bind with CID</button>
         <!--
                 <button class="btn btn-default bg-white" >Sign In With MetaMask</button>
                 <br><br>
@@ -43,9 +73,20 @@ var CarRegister_STORAGE_FILE = "CRtemp.json";
 export default {
   components: { Landing, Userinfo, Rawdata, Diagram },
   name: "CarRegister",
+  props: {'user':Object},
+  data() {
+    return {
+      errors: [],
+      org: null,
+      number: null,
+      type: null,
+      color: null,
+      IDNumber: null
+    };
+  },
   methods: {
-    writeData() {
-      userSession.putFile(CarRegister_STORAGE_FILE, JSON.stringify("123"));
+    writeData(CID) {
+      userSession.putFile(CarRegister_STORAGE_FILE, JSON.stringify(CID));
     },
     readData() {
       userSession
@@ -53,13 +94,40 @@ export default {
         .then(text => {
           console.log("rawdata:", text);
         });
+    },
+    bindCID() {
+      //console.log("user",this.user)
+      this.writeData(this.user.username);
+      if (this.org && this.number && this.type && this.color && this.IDNumber)
+      {
+          alert("Bind Successfully")
+          this.$emit("change_Register", true);
+      }
+      else
+        alert("Check your input!!!")
+      
+    },
+    checkForm: function(e) {
+      if (this.name && this.age) {
+        return true;
+      }
+
+      this.errors = [];
+
+      if (!this.name) {
+        this.errors.push("Name required.");
+      }
+      if (!this.age) {
+        this.errors.push("Age required.");
+      }
+
+      e.preventDefault();
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-
 .title {
   text-align: center;
 }
@@ -82,12 +150,12 @@ export default {
   align-items: center;
 }
 .bind-text {
-    color: #fff;
-    border-radius: 5px;
+  color: #fff;
+  border-radius: 5px;
 }
 
 .placeholder .form-control {
-    color: #000;
+  color: #000;
 }
 </style>
 

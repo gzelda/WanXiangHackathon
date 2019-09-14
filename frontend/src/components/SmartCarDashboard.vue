@@ -109,6 +109,9 @@ export default {
       },
     };
   },
+  mounted(){
+    console.log("user exists?",user)
+  },
   computed: {
       
   },
